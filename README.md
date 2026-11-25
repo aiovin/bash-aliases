@@ -29,7 +29,7 @@ bash -c "$(curl -SsfL https://raw.githubusercontent.com/aiovin/bash-aliases/refs
 ## Что именно делает скрипт
 
 1. Проверяет, что в текущем `~/.bashrc` либо оба маркера, либо ни одного (одинокий маркер останавливает скрипт).
-2. Скачивает `custom-bashrc.sh` и проверяет, что файл не битый (не пустой, правильные первая и последняя строки с маркерами).
+2. Скачивает `custom-aliases.sh` и проверяет, что файл не битый (не пустой, правильные первая и последняя строки с маркерами).
 3. Делает бэкап `~/.bashrc` в `~/.bashrc.bak` (перезаписывается при каждом запуске).
 4. Удаляет старый блок, дописывает новый, схлопывает повторяющиеся пустые строки.
 5. Если передан `--weather-city`, заменяет `Abakan` на указанный город.
@@ -71,7 +71,7 @@ Options:
 ## What the Script Does
 
 1. Checks that either both markers or neither marker are present in the current `~/.bashrc` (a single marker causes the script to abort).
-2. Downloads `custom-bashrc.sh` and verifies that the file is valid (not empty, with the correct first and last marker lines).
+2. Downloads `custom-aliases.sh` and verifies that the file is valid (not empty, with the correct first and last marker lines).
 3. Creates a backup of `~/.bashrc` at `~/.bashrc.bak` (overwritten on each run).
 4. Removes the old block, appends the new one, and collapses consecutive empty lines.
 5. If `--weather-city` is specified, replaces `Abakan` with the provided city.
