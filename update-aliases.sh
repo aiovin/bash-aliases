@@ -20,7 +20,7 @@ usage() {
     cat <<EOF
 Usage: ${0##*/} [-w|--weather-city CITY] [-h|--help]
 
-Updates the aliases block in ~/.bashrc from the gist.
+Updates the aliases block in ~/.bashrc from the GitHub repository.
 
 Options:
   -w, --weather-city CITY  city for the weather forecast (default: Abakan)
@@ -77,6 +77,7 @@ if ! curl -SsfL "$aliases_url" -o "$new_bashrc"; then
        exit 1
 fi
 
+# Normalize line endings
 sed -i 's/\r$//' "$new_bashrc"
 
 # Make sure the downloaded file is not corrupted
