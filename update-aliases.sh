@@ -101,8 +101,9 @@ cat "$new_bashrc" >> "$cur_bashrc"
 # Cleanup (collapse consecutive blank lines)
 sed -i '/^$/N;/^\n$/D' "$cur_bashrc"
 
+# Set a custom weather city (only within the aliases block)
 if [[ -n "$weather_city" ]]; then
-    sed -i "s/\bAbakan\b/$weather_city/g" "$cur_bashrc"
+    sed -i "/^${begin_marker}\$/,/^${end_marker}\$/s/\bAbakan\b/$weather_city/g" "$cur_bashrc"
 fi
 
 # Done
