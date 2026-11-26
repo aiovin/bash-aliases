@@ -1,6 +1,8 @@
 # === BEGIN CUSTOM ALIASES ===
 
-alias update-aliases='bash -c "$(curl -SsfL https://raw.githubusercontent.com/aiovin/bash-aliases/refs/heads/main/update-aliases.sh)" -- --weather-city Moscow && source ~/.bashrc'
+update-aliases() {
+  bash -c "$(curl -SsfL https://raw.githubusercontent.com/aiovin/bash-aliases/refs/heads/main/update-aliases.sh)" -- "$@" && source ~/.bashrc
+}
 
 export PATH="$PATH:/usr/local/go/bin"
 export PATH="$PATH:/usr/sbin:/sbin"
