@@ -6,10 +6,10 @@
 
 ## Файлы
 
-- `custom-bashrc.sh` - кастомный блок с алиасами.
+- `custom-aliases.sh` - кастомный блок с алиасами.
 - `update-aliases.sh` - скачивает блок и заменяет его в `~/.bashrc`.
 
-## Использование
+## Добавление алиасов из custom-aliases.sh в ~/.bashrc
 
 ```bash
 bash -c "$(curl -SsfL https://raw.githubusercontent.com/aiovin/bash-aliases/refs/heads/main/update-aliases.sh)" && source ~/.bashrc
@@ -18,13 +18,25 @@ bash -c "$(curl -SsfL https://raw.githubusercontent.com/aiovin/bash-aliases/refs
 С указанием города для алиаса погоды (по умолчанию `Abakan`):
 
 ```bash
-bash -c "$(curl -SsfL https://raw.githubusercontent.com/aiovin/bash-aliases/refs/heads/main/update-aliases.sh)" -- --weather-city Moscow && source ~/.bashrc
+bash -c "$(curl -SsfL https://raw.githubusercontent.com/aiovin/bash-aliases/refs/heads/main/update-aliases.sh)" -- --weather-city Alaska && source ~/.bashrc
+```
+
+В алиасы входит команда `update-aliases` для их последующего обновления (опционально с городом для алиасов погоды):
+
+```bash
+update-aliases --weather-city Alaska
 ```
 
 Опции:
 
 - `-w, --weather-city CITY` - город для прогноза погоды (только латиница, `_` и `-`)
 - `-h, --help` - справка
+
+## Crontab пример
+
+```bash
+0 0 * * * { f=$(mktemp) && curl -SsfL https://raw.githubusercontent.com/aiovin/bash-aliases/refs/heads/main/update-aliases.sh -o "$f" && bash "$f" --weather-city Alaska; rm -f "$f"; } >> $HOME/var/log/bash-aliases.log 2>&1
+```
 
 ## Что именно делает скрипт
 
@@ -48,10 +60,10 @@ Aliases for `~/.bashrc` and a script to update them.
 
 ## Files
 
-- `custom-bashrc.sh` - a custom block containing aliases.
+- `custom-aliases.sh` - a custom block containing aliases.
 - `update-aliases.sh` - downloads the block and replaces it in `~/.bashrc`.
 
-## Usage
+## Add the aliases from custom-aliases.sh to ~/.bashrc
 
 ```bash
 bash -c "$(curl -SsfL https://raw.githubusercontent.com/aiovin/bash-aliases/refs/heads/main/update-aliases.sh)" && source ~/.bashrc
@@ -60,13 +72,25 @@ bash -c "$(curl -SsfL https://raw.githubusercontent.com/aiovin/bash-aliases/refs
 To specify a city for the weather alias (defaults to `Abakan`):
 
 ```bash
-bash -c "$(curl -SsfL https://raw.githubusercontent.com/aiovin/bash-aliases/refs/heads/main/update-aliases.sh)" -- --weather-city Moscow && source ~/.bashrc
+bash -c "$(curl -SsfL https://raw.githubusercontent.com/aiovin/bash-aliases/refs/heads/main/update-aliases.sh)" -- --weather-city Alaska && source ~/.bashrc
+```
+
+The aliases include a built-in `update-aliases` command for updating them later (optionally with a city for the weather aliases):
+
+```bash
+update-aliases --weather-city Alaska
 ```
 
 Options:
 
 - `-w, --weather-city CITY` - city for the weather forecast (Latin letters, `_` and `-` only).
 - `-h, --help` - display help.
+
+## Crontab example
+
+```bash
+0 0 * * * { f=$(mktemp) && curl -SsfL https://raw.githubusercontent.com/aiovin/bash-aliases/refs/heads/main/update-aliases.sh -o "$f" && bash "$f" --weather-city Alaska; rm -f "$f"; } >> $HOME/var/log/bash-aliases.log 2>&1
+```
 
 ## What the Script Does
 
