@@ -106,4 +106,4 @@ if [[ -n "$weather_city" ]]; then
 fi
 
 # Done
-echo "Aliases successfully updated."
+echo "[$(date +'%d/%m/%Y %H:%M')] Aliases successfully updated."
